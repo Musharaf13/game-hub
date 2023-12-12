@@ -1,0 +1,5 @@
+.custom-img-class {
+    margin-right: 1rem; /* Or the desired margin value */
+    border-radius: 10%; /* For rounded corners */
+    float: left; /* To float the element to the left */
+  }
