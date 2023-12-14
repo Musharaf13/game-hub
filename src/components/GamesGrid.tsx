@@ -13,7 +13,7 @@ interface FetchData {
 }
 
 const GamesGrid = () => {
-  const { games, error, isLoading } = useGames();
+  const { data, error, isLoading } = useGames();
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 
@@ -29,7 +29,7 @@ const GamesGrid = () => {
           skeletons.map((skeleton) => (
             <GameCardSkeleton key={skeleton}></GameCardSkeleton>
           ))}
-        {games.map((game) => (
+        {data.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
       </SimpleGrid>

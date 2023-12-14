@@ -4,10 +4,10 @@ import { Avatar, Box, HStack, Text, VStack } from "@chakra-ui/react";
 import getCropedImage from "../utilities";
 
 const GenresList = () => {
-  const { genres } = useGenres();
+  const { data } = useGenres();
   return (
     <VStack align={"flex-start"} padding={"20px"}>
-      {genres
+      {data
         .filter((genre) => !genre.name.includes(" "))
         .map((genre) => (
           <HStack>
