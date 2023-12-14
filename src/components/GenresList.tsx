@@ -1,24 +1,36 @@
 import React from "react";
 import useGenres from "../hooks/useGenres";
-import { Avatar, Box, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  HStack,
+  Image,
+  List,
+  ListItem,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import getCropedImage from "../utilities";
 
 const GenresList = () => {
   const { data } = useGenres();
   return (
-    <VStack align={"flex-start"} padding={"20px"}>
+    <List padding={"20px"}>
       {data
         .filter((genre) => !genre.name.includes(" "))
         .map((genre) => (
-          <HStack>
-            <Avatar
-              src={getCropedImage(genre.image_background)}
-              borderRadius={"10px"}
-            ></Avatar>
-            <Text>{genre.name}</Text>
-          </HStack>
+          <ListItem key={genre.id} padding="5px">
+            <HStack>
+              <Image
+                src={getCropedImage(genre.image_background)}
+                borderRadius="5px"
+                boxSize="32px"
+              ></Image>
+              <Text fontSize="lg">{genre.name}</Text>
+            </HStack>
+          </ListItem>
         ))}
-    </VStack>
+    </List>
     // <Box key={genre.id}>{genre.name}</Box>
     // <ul>
     //   {genres.map((genre) => (
