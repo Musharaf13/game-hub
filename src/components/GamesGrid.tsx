@@ -12,8 +12,12 @@ interface FetchData {
   results: Game[];
 }
 
-const GamesGrid = () => {
-  const { data, error, isLoading } = useGames();
+interface Props {
+  selectGenre: string | null;
+}
+
+const GamesGrid = ({ selectGenre }: Props) => {
+  const { data, error, isLoading } = useGames(selectGenre);
 
   const skeletons = [1, 2, 3, 4, 5, 6];
 

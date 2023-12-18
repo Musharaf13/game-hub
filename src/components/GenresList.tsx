@@ -3,6 +3,7 @@ import useGenres from "../hooks/useGenres";
 import {
   Avatar,
   Box,
+  Button,
   Center,
   HStack,
   Image,
@@ -14,7 +15,11 @@ import {
 } from "@chakra-ui/react";
 import getCropedImage from "../utilities";
 
-const GenresList = () => {
+interface Props {
+  selectGenre: (value: string | null) => void;
+}
+
+const GenresList = ({ selectGenre }: Props) => {
   const { data, isLoading } = useGenres();
 
   return (
@@ -34,7 +39,16 @@ const GenresList = () => {
                   borderRadius="5px"
                   boxSize="32px"
                 ></Image>
-                <Text fontSize="lg">{genre.name}</Text>
+                <Button
+                  onClick={() => {
+                    console.log("genre: " + genre.name + "id: " + genre.id);
+                    selectGenre(genre.name);
+                  }}
+                  fontSize="lg"
+                  variant={"link"}
+                >
+                  {genre.name}
+                </Button>
               </HStack>
             </ListItem>
           ))

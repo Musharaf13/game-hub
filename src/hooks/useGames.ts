@@ -22,6 +22,9 @@ interface FetchData {
   results: Game[];
 }
 
-const useGames = () => useData<Game>("/games");
+const useGames = (value: string | null) =>
+  useData<Game>("/games", { params: { genres: value?.toLowerCase() } }, [
+    value,
+  ]);
 
 export default useGames;
